@@ -37,6 +37,7 @@ runs:
       id: trigger-deployment
       run: |
         RESULT=`curl \
+          --verbose \
           --fail \
           --header "Authorization: token ${{ inputs.token }}" \
           --header "Accept: application/vnd.github.v3+json" \
