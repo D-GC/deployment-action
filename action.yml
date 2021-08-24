@@ -55,3 +55,6 @@ runs:
         
         echo "::set-output name=deployment-id::$(echo $RESULT | jq -r '.id')"
       shell: bash
+    
+    - run: |
+      echo "Deployment id: ${{ steps.trigger-deployment.outputs.deployment-id }}"
