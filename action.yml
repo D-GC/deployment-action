@@ -46,17 +46,5 @@ runs:
           --request POST \
           https://api.github.com/repos/${{ inputs.repository }}/deployments \
           --data '{"ref":"${{ inputs.ref }}", "environment": "${{ inputs.environment }}", "task": "${{ inputs.task }}", "auto_merge": false, "required_contexts": ${{ inputs.required-contexts}}, "payload": ${{ inputs.payload}} }'`
-        
-        echo $RESULT | jq -r '.id'
-        
-        echo $RESULT
-        
-        echo "Ends"
-        
         echo "::set-output name=deployment-id::$(echo $RESULT | jq -r '.id')"
       shell: bash
-      
-    - run: |
-        echo "Deployment id: ${{ steps.trigger-deployment.outputs.deployment-id }}"
-      shell: bash
-     
