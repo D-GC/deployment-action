@@ -11,7 +11,7 @@ try {
   const requiredContexts = JSON.parse(core.getInput('required-contexts'));
   const payload = core.getInput('payload');
 
-  const payload = {
+  const payloads = {
     ref,
     environment,
     payload: undefined,
@@ -21,7 +21,7 @@ try {
     payload
   };
 
-  createDeployment(repository, payload, token)
+  createDeployment(repository, payloads, token)
     .then(({ id }) => {
       core.setOutput("deployment-id", id);
     })
